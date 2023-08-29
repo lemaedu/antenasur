@@ -49,6 +49,7 @@ class _MyAppState extends State<MyApp> {
   @override
   Widget build(BuildContext context) {
     return MaterialApp(
+        debugShowCheckedModeBanner: false,
         home: Scaffold(
           appBar: AppBar(
             centerTitle: true,
@@ -102,9 +103,8 @@ class _MyAppState extends State<MyApp> {
                   style: TextStyle(fontWeight: FontWeight.bold, fontSize: 16),
                 ),
                 SizedBox(height: 20),
-
                 FloatingActionButton(
-                  elevation: 20,
+                  elevation: 10,
                   onPressed: () {
                     isPlaying ? _radioPlayer.pause() : _radioPlayer.play();
                   },
