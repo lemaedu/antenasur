@@ -5,6 +5,8 @@ import 'package:flutter/cupertino.dart';
 
 class AlertScreen extends StatelessWidget {
 
+  static const String routerName = 'Social';
+
   const AlertScreen({Key? key}) : super(key: key);
 
   void displayDialogIOS( BuildContext context ) {
@@ -77,10 +79,7 @@ class AlertScreen extends StatelessWidget {
 
         }
     );
-
-
   }
-
 
   @override
   Widget build(BuildContext context) {
