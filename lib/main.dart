@@ -43,15 +43,17 @@ class _MyAppState extends State<MyApp> {
       setState(() {
         metadata = value;
       });
-    });    
+    });
   }
 
   @override
   Widget build(BuildContext context) {
     return MaterialApp(
         debugShowCheckedModeBanner: false,
-        home: HomeWidget(radioPlayer: _radioPlayer, metadata: metadata, isPlaying: isPlaying),       
+        home: HomeWidget(
+            radioPlayer: _radioPlayer,
+            metadata: metadata,
+            isPlaying: isPlaying),
         theme: AppTheme.lightTheme);
   }
 }
-

@@ -22,14 +22,13 @@ class HomeWidget extends StatelessWidget {
         title: const Text('ANTENA SUR - APP'),
       ),
       drawer: const DrawerWidget(),
-      
       body: Container(
         decoration: const BoxDecoration(
           image: DecorationImage(
             image: AssetImage("assets/images/fondo2.jpg"),
             opacity: 0.8,
             fit: BoxFit.cover,
-          ),              
+          ),
         ),
         child: Center(
           child: Column(
@@ -43,16 +42,16 @@ class HomeWidget extends StatelessWidget {
                     artwork = snapshot.data;
                   } else {
                     artwork = Image.asset(
-                      'assets/images/logo_as_v1.0.0.png',                    
-                      fit: BoxFit.cover,                    
+                      'assets/images/logo_as_v1.0.0.png',
+                      fit: BoxFit.cover,
                     );
                   }
-                  return Container(
+                  return SizedBox(
                     height: 180,
                     width: 180,
                     child: ClipRRect(
-                      child: artwork,
                       borderRadius: BorderRadius.circular(10.0),
+                      child: artwork,
                     ),
                   );
                 },
@@ -69,20 +68,21 @@ class HomeWidget extends StatelessWidget {
                 metadata?[0] ?? 'Apagado',
                 softWrap: false,
                 overflow: TextOverflow.fade,
-                style: TextStyle(fontWeight: FontWeight.bold, fontSize: 20),
+                style:
+                    const TextStyle(fontWeight: FontWeight.bold, fontSize: 20),
               ),
               Text(
                 metadata?[1] ?? '',
                 softWrap: false,
                 overflow: TextOverflow.fade,
-                style: TextStyle(fontWeight: FontWeight.bold, fontSize: 12),
+                style:
+                    const TextStyle(fontWeight: FontWeight.bold, fontSize: 12),
               ),
-              SizedBox(height: 20),
-
+              const SizedBox(height: 20),
             ],
           ),
         ),
-    ),
+      ),
       /*
       floatingActionButton: FloatingActionButton(        
         elevation: 10,        
@@ -95,16 +95,16 @@ class HomeWidget extends StatelessWidget {
             ),            
       ),
     */
-    floatingActionButton: Align(
+      floatingActionButton: Align(
         alignment: Alignment.bottomCenter,
         child: FloatingActionButton(
           onPressed: () {
-          isPlaying ? _radioPlayer.pause() : _radioPlayer.play();
+            isPlaying ? _radioPlayer.pause() : _radioPlayer.play();
           },
           tooltip: 'Control',
           child: Icon(
-            isPlaying ? Icons.pause_rounded : Icons.play_arrow_rounded, size:35
-            ),          
+              isPlaying ? Icons.pause_rounded : Icons.play_arrow_rounded,
+              size: 35),
         ),
       ),
     );
