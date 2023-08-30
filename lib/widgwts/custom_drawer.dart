@@ -56,13 +56,13 @@ class _AlertDialog extends StatelessWidget {
   Widget build(BuildContext context) {
     return AlertDialog(
       elevation: 5,
-      title: const Text('Titulo'),
+      title: const Text('DESARROLLADO POR:'),
       shape: RoundedRectangleBorder(
           borderRadius: BorderRadiusDirectional.circular(10)),
       content: const Column(
         mainAxisSize: MainAxisSize.min,
         children: [
-          Text('Este es el contenido de la alerta'),
+          Text('Luis Lema'),
           SizedBox(height: 10),
           FlutterLogo(size: 100)
         ],

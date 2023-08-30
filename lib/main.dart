@@ -1,59 +1,35 @@
+import 'package:antenasur/apis/shared_prefs_api.dart';
+import 'package:antenasur/models/radio_station.dart';
+import 'package:antenasur/providers/radio_provider.dart';
 import 'package:antenasur/screens/home_screen.dart';
 import 'package:flutter/material.dart';
-import 'package:radio_player/radio_player.dart';
+
 import 'package:antenasur/theme/theme.dart';
+import 'package:provider/provider.dart';
 
-void main() {
+void main() async {
   WidgetsFlutterBinding.ensureInitialized();
-  runApp(const MyApp());
+  final radioStation = await SharedPrefsApi.getInitialRadioStation();
+  runApp(MyApp(
+    initialStation: radioStation,
+  ));
 }
 
-class MyApp extends StatefulWidget {
-  const MyApp({super.key});
-
-  @override
-  _MyAppState createState() => _MyAppState();
-}
-
-class _MyAppState extends State<MyApp> {
-  final RadioPlayer _radioPlayer = RadioPlayer();
-  bool isPlaying = false;
-  List<String>? metadata;
-
-  @override
-  void initState() {
-    super.initState();
-    initRadioPlayer();
-  }
-
-  void initRadioPlayer() {
-    _radioPlayer.setChannel(
-      title: 'Antena Sur Digital',
-      url: 'https://cast1.my-control-panel.com/proxy/antenas1/stream',
-      imagePath: 'assets/images/logo_as_v1.0.0.png',
-    );
-
-    _radioPlayer.stateStream.listen((value) {
-      setState(() {
-        isPlaying = value;
-      });
-    });
-
-    _radioPlayer.metadataStream.listen((value) {
-      setState(() {
-        metadata = value;
-      });
-    });
-  }
+class MyApp extends StatelessWidget {
+  final RadioStation initialStation;
+  const MyApp({required this.initialStation, super.key});
 
   @override
   Widget build(BuildContext context) {
-    return MaterialApp(
-        debugShowCheckedModeBanner: false,
-        home: HomeWidget(
-            radioPlayer: _radioPlayer,
-            metadata: metadata,
-            isPlaying: isPlaying),
-        theme: AppTheme.lightTheme);
+    return MultiProvider(
+      providers: [
+        ChangeNotifierProvider(
+            create: ((context) => RadioProvider(initialStation))),
+      ],
+      child: MaterialApp(        
+        theme: AppTheme.lightTheme,
+        home: const HomeScreen(),
+      ),
+    );
   }
 }
