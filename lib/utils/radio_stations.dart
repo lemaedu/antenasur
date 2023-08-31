@@ -6,7 +6,7 @@ class RadioStations {
         name: 'Antena Sur 97.3FM',
         streamUrl: 'https://cast1.my-control-panel.com/proxy/antenas1/stream',
         photoUrl:
-            'https://antenasur.com.ec/wp-content/uploads/2023/08/33728380_gradient_background_02-1-scaled.jpeg'),
+            'https://antenasur.com.ec/wp-content/uploads/2023/08/logo_as_v1.0.0.png'),
     RadioStation(
         name: 'La Voz de Aiiech 101.7FM',
         streamUrl: 'https://cast1.my-control-panel.com/proxy/antenas1/stream',

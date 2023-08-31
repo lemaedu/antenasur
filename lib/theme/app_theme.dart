@@ -4,6 +4,7 @@ class AppTheme {
   static const Color primary = Colors.lightBlue;
 
   static final ThemeData lightTheme = ThemeData.light().copyWith(
+    useMaterial3: true,
     //Color primario
     primaryColor: Colors.lightBlue,
 

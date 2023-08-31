@@ -27,7 +27,7 @@ class _RadioPlayerState extends State<RadioPlayer>
   void initState() {
     super.initState();
     animationController = AnimationController(
-        vsync: this, duration: const Duration(microseconds: 500));
+        vsync: this, duration: const Duration(milliseconds: 500));
 
     radioListOffset = Tween(
       begin: const Offset(0, 1),
